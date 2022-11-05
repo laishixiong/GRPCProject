@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Create a Proto File — gRPC Chatroom Workshop  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="./exercise1-protofile_files/custom.css" type="text/css">
+  <link rel="stylesheet" href="./exercise1-protofile_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://retroryan8080.gitlab.io/grpc-java-workshop/genindex.html">
+    <link rel="search" title="Search" href="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html">
+    <link rel="next" title="Configure Maven" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html">
+    <link rel="prev" title="Exercise 1 - Basics" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html"> 
+
+  
+  <script src="./exercise1-protofile_files/modernizr.min.js.download"></script><style type="text/css">
+:root .btn[href*="/viphktv.com/"],
+:root .btn[href*=".papa9394.com"],
+:root .btn.btn-success.text-white[href*=".com:"]
+{ display: none !important; }</style>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html" class="icon icon-home"> gRPC Chatroom Workshop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/setup/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html"><span class="toctree-expand"></span>Exercise 1 - Basics</a><ul class="">
+<li class="toctree-l2 current"><a class="reference internal current" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html#"><span class="toctree-expand"></span>Create a Proto File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html#initialize-the-proto-file">1 - Initialize the Proto file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html#define-messages">2 - Define messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html#define-service-and-operations">3 - Define service and operations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html">Configure Maven</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/stubs.html">Generate Stubs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html">Exercise 2 - Implement Stubs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise3/exercise3.html">Exercise 3 - Testing the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html">Exercise 4 - Bidirectional Streaming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/exercise5.html">Exercise 5 - Deployment to Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/exercise6.html">Exercise 6 - Metadata and Interceptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise7/exercise7.html">Exercise 7 - Context Propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise8/exercise8.html">Exercise 8 - Tracing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">gRPC Chatroom Workshop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">Docs</a> »</li>
+        
+          <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html">Exercise 1 - Basics</a> »</li>
+        
+      <li>Create a Proto File</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/_sources/exercise1/protofile.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="create-a-proto-file">
+<h1>Create a Proto File<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html#create-a-proto-file" title="Permalink to this headline">¶</a></h1>
+<p>First, define message payloads and RPC operations for the authentication service. We’ll have two RPC operations:</p>
+<ul class="simple">
+<li><strong>Authenticate</strong><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Input:</th><td class="field-body">username, password</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Output:</th><td class="field-body">Check the username/password pair against the entry in the user repository. If it matches, return a signed JWT token.|</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><strong>Authorization</strong><table class="docutils field-list" frame="void" rules="none">
+<colgroup><col class="field-name">
+<col class="field-body">
+</colgroup><tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Input:</th><td class="field-body">token</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Output:</th><td class="field-body">If the token is valid, retrieve the user, and return a list of associated roles. If not, user was not found, return Status.NOT_FOUND error. If JWT was not verifiable, return Status.UNAUTHENTICATED error.</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<div class="section" id="initialize-the-proto-file">
+<h2>1 - Initialize the Proto file<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html#initialize-the-proto-file" title="Permalink to this headline">¶</a></h2>
+<p>Create / open the proto file: <cite>auth-service/src/main/proto/AuthService.proto</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>See that the Protobuffer syntax to proto3 to ensure we are using Protobuffer 3 syntax.</li>
+<li>Specify the package. The package corresponds to the Java packages.</li>
+<li>Set protoc options with option keyword. By default, the generator will generate all of the message classes into a single giant class file. In this example, we’ll generate each of the Protobuffer message into its own class by setting the java_multiple_files option.</li>
+</ul>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// 1. Set the syntax, package, and options</span>
+<span class="go">syntax = "proto3";</span>
+<span class="go">option java_multiple_files = true;</span>
+<span class="go">package com.example.auth;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-messages">
+<h2>2 - Define messages<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html#define-messages" title="Permalink to this headline">¶</a></h2>
+<p>After defining the syntax, package, and options, define the message payloads. Notice that every field is strongly typed. There is a variety of out of the box primitives:</p>
+<ul class="simple">
+<li>Primitives such as string, int32, int64, bool, etc.</li>
+<li>To represent an array, use repeated, e.g., repeated string</li>
+<li>Strongly typed map/hash, e.g., map&lt;string, int64&gt;</li>
+<li>Custom types, such as<ul>
+<li>Nested types</li>
+<li>Re-use defined types</li>
+<li>Enumerations, e.g. enum Sentiment { HAPPY = 0; SAD = 1; }</li>
+</ul>
+</li>
+</ul>
+<p>Every field must be assigned a tag number (e.g., string username = 1). The tag number is what uniquely identifies the field rather than the name of the field. When serialized, the tag number is stored in the serialized payload and transferred across the wire.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">syntax = "proto3";</span>
+<span class="go">...</span>
+
+<span class="go">// 2. Add the message definitions</span>
+<span class="go">message AuthenticationRequest {</span>
+<span class="go">    string username = 1;</span>
+<span class="go">    string password = 2;</span>
+<span class="go">}</span>
+
+<span class="go">message AuthenticationResponse {</span>
+<span class="go">    string token = 1;</span>
+<span class="go">}</span>
+
+<span class="go">message AuthorizationRequest {</span>
+<span class="go">    string token = 1;</span>
+<span class="go">}</span>
+
+<span class="go">message AuthorizationResponse {</span>
+<span class="go">    string username = 1;</span>
+<span class="go">    repeated string roles = 2;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-service-and-operations">
+<h2>3 - Define service and operations<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html#define-service-and-operations" title="Permalink to this headline">¶</a></h2>
+<p>After defining the message payload, define the service, and operations within the service. Every operation must have an input type and an output type.</p>
+<p>For the Authentication service, we’ll define an unary request, which is basically a simple request/response:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">syntax = "proto3";</span>
+<span class="go">...</span>
+
+<span class="go">message AuthenticationRequest {</span>
+<span class="go">    ...</span>
+<span class="go">}</span>
+<span class="go">...</span>
+<span class="go">// 3. Add the service definitions</span>
+<span class="go">service AuthenticationService {</span>
+<span class="go">    rpc authenticate(AuthenticationRequest) returns (AuthenticationResponse);</span>
+<span class="go">    rpc authorization(AuthorizationRequest) returns (AuthorizationResponse);</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html" class="btn btn-neutral float-right" title="Configure Maven" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html" class="btn btn-neutral" title="Exercise 1 - Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2017, Ryan Knight, Ray Tsang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./exercise1-protofile_files/jquery.js.download"></script>
+      <script type="text/javascript" src="./exercise1-protofile_files/underscore.js.download"></script>
+      <script type="text/javascript" src="./exercise1-protofile_files/doctools.js.download"></script>
+
+  
+
+  <script type="text/javascript" src="./exercise1-protofile_files/theme.js.download"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+
+</body></html>

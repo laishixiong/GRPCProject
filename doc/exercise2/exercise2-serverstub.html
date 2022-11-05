@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Implement Server Stub — gRPC Chatroom Workshop  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="./exercise2-serverstub_files/custom.css" type="text/css">
+  <link rel="stylesheet" href="./exercise2-serverstub_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://retroryan8080.gitlab.io/grpc-java-workshop/genindex.html">
+    <link rel="search" title="Search" href="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html">
+    <link rel="next" title="Write the Server main entry" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/servermain.html">
+    <link rel="prev" title="Exercise 2 - Implement Stubs" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html"> 
+
+  
+  <script src="./exercise2-serverstub_files/modernizr.min.js.download"></script><style type="text/css">
+:root .btn[href*="/viphktv.com/"],
+:root .btn[href*=".papa9394.com"],
+:root .btn.btn-success.text-white[href*=".com:"]
+{ display: none !important; }</style>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html" class="icon icon-home"> gRPC Chatroom Workshop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html">Exercise 1 - Basics</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html"><span class="toctree-expand"></span>Exercise 2 - Implement Stubs</a><ul class="">
+<li class="toctree-l2 current"><a class="reference internal current" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#"><span class="toctree-expand"></span>Implement Server Stub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#extend-the-base-implementation">Extend the Base Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#override-and-implement-the-authenticate-and-authorize-methods">Override and Implement the Authenticate and Authorize Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#override-authenticate">Override Authenticate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#override-authorize">Override Authorize</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/servermain.html">Write the Server main entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/runserver.html">Run the Server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise3/exercise3.html">Exercise 3 - Testing the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html">Exercise 4 - Bidirectional Streaming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/exercise5.html">Exercise 5 - Deployment to Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/exercise6.html">Exercise 6 - Metadata and Interceptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise7/exercise7.html">Exercise 7 - Context Propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise8/exercise8.html">Exercise 8 - Tracing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">gRPC Chatroom Workshop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">Docs</a> »</li>
+        
+          <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html">Exercise 2 - Implement Stubs</a> »</li>
+        
+      <li>Implement Server Stub</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/_sources/exercise2/serverstub.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="implement-server-stub">
+<h1>Implement Server Stub<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#implement-server-stub" title="Permalink to this headline">¶</a></h1>
+<p>Open <cite>auth-service/src/main/java/com/example/auth/grpc/AuthServiceImpl.java</cite>. In this file, we need to:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Extend from the gRPC generated AuthServiceBaseImpl class</li>
+<li>Implement the authenticate and authorization methods</li>
+</ol>
+</div></blockquote>
+<div class="section" id="extend-the-base-implementation">
+<h2>Extend the Base Implementation<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#extend-the-base-implementation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">...</span>
+<span class="go">// TODO Extend gRPC's AuthenticationServiceBaseImpl</span>
+<span class="go">public class AuthServiceImpl extends AuthenticationServiceGrpc.AuthenticationServiceImplBase  {</span>
+<span class="go">  ...</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="override-and-implement-the-authenticate-and-authorize-methods">
+<h2>Override and Implement the Authenticate and Authorize Methods<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#override-and-implement-the-authenticate-and-authorize-methods" title="Permalink to this headline">¶</a></h2>
+<p>The base implementation bootstraps the underlying descriptors and pipes necessary for gRPC server to communicate with the actual service implementation, and makes the call to the actual service methods.  The service methods have default implementations in the base class, but they will all throw Status.UNIMPLEMENTED error.  You’ll need to override these methods explicitly:</p>
+</div>
+<div class="section" id="override-authenticate">
+<h2>Override Authenticate<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#override-authenticate" title="Permalink to this headline">¶</a></h2>
+<p>Override the authenticate() base implementation method</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// TODO Override authenticate method</span>
+<span class="go">@Override</span>
+<span class="go">public void authenticate(AuthenticationRequest request, StreamObserver&lt;AuthenticationResponse&gt; responseObserver) {</span>
+<span class="go">...</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>Notice that even though we defined a simple unary call (request/response), the server implementation is fully asynchronous. That means, to return the value or errors to the client, you must use responseObserver.</p>
+<ol class="arabic simple">
+<li>Use <cite>UserRepository</cite> to retrieve the user based on the username.</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">User user = repository.findUser(request.getUsername());</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>If user doesn’t exist, return <cite>Status.UNAUTHENTICATED</cite> error</li>
+<li><cite>responseObserver.onError(…)</cite> will close the stream. You should return and avoid calling any other <cite>responseObserver</cite> callbacks afterwards.</li>
+<li>Similarly, if user exists, but the password doesn’t match, also return <cite>Status.UNAUTHENTICATED</cite> error using <cite>responseObserver.onError(…)</cite></li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">if (user == null || !user.getPassword().equals(request.getPassword())) {</span>
+<span class="go">  responseObserver.onError(Status.UNAUTHENTICATED.asRuntimeException());</span>
+<span class="go">  return;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Finally, if all things goes well, generate a JWT token and return it to the it. You must call <cite>responseObserver.onCompleted()</cite> to completed the call. Otherwise, the client will wait until that is called. If you never call it - then the client will wait forever.</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">String token = generateToken(request.getUsername());</span>
+<span class="go">responseObserver.onNext(AuthenticationResponse.newBuilder()</span>
+<span class="go">  .setToken(token)</span>
+<span class="go">  .build());</span>
+<span class="go">responseObserver.onCompleted();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="override-authorize">
+<h2>Override Authorize<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/serverstub.html#override-authorize" title="Permalink to this headline">¶</a></h2>
+<p>Override the authorize() method:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">// TODO Override authorization method</span>
+<span class="go">public void authorization(AuthorizationRequest request, StreamObserver&lt;AuthorizationResponse&gt; responseObserver) {</span>
+<span class="go">  ...</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>Use <cite>jwtFromToken(…)</cite> to verify the token</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">DecodedJWT jwt = jwtFromToken(request.getToken());</span>
+</pre></div>
+</div>
+<p>Catch JWTVerificationException:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">try {</span>
+<span class="go">  DecodedJWT jwt = jwtFromToken(request.getToken());</span>
+<span class="go">} catch (JWTVerificationException e) {</span>
+<span class="go">  responseObserver.onError(Status.UNAUTHENTICATED.asRuntimeException());</span>
+<span class="go">  return;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>If JWT token is valid, a DecodedJWT object will be returned. From there, extract the username using getSubject()</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">String username = jwt.getSubject();</span>
+<span class="go">User user = repository.findUser(username);</span>
+
+<span class="go">if (user == null) {</span>
+<span class="go">  // send error</span>
+<span class="go">  return;</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>Use <cite>UserRepository</cite> to retrieve the user, construct <cite>AuthorizationResponse</cite> with the roles, then return that.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">responseObserver.onNext(AuthorizationResponse.newBuilder()</span>
+<span class="go">  .addAllRoles(user.getRoles())</span>
+<span class="go">  .build());</span>
+<span class="go">responseObserver.onCompleted();</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://github.com/retroryan/grpc-java-chatroom-workshop/blob/1-basics/auth-service/src/main/java/com/example/auth/grpc/AuthServiceImpl.java">Hint: Full implementation here</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/servermain.html" class="btn btn-neutral float-right" title="Write the Server main entry" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html" class="btn btn-neutral" title="Exercise 2 - Implement Stubs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2017, Ryan Knight, Ray Tsang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./exercise2-serverstub_files/jquery.js.download"></script>
+      <script type="text/javascript" src="./exercise2-serverstub_files/underscore.js.download"></script>
+      <script type="text/javascript" src="./exercise2-serverstub_files/doctools.js.download"></script>
+
+  
+
+  <script type="text/javascript" src="./exercise2-serverstub_files/theme.js.download"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+
+</body></html>

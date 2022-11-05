@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!-- saved from url=(0075)https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/exercise5.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Exercise 5 - Deployment to Kubernetes — gRPC Chatroom Workshop  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="./exercise5-exercise5_files/custom.css" type="text/css">
+  <link rel="stylesheet" href="./exercise5-exercise5_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://retroryan8080.gitlab.io/grpc-java-workshop/genindex.html">
+    <link rel="search" title="Search" href="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html">
+    <link rel="next" title="Google Cloud Console Setup" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html">
+    <link rel="prev" title="Implement Chat CLI Client" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatcli.html"> 
+
+  
+  <script src="./exercise5-exercise5_files/modernizr.min.js.download"></script><style type="text/css">
+:root .btn[href*="/viphktv.com/"],
+:root .btn[href*=".papa9394.com"],
+:root .btn.btn-success.text-white[href*=".com:"]
+{ display: none !important; }</style>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html" class="icon icon-home"> gRPC Chatroom Workshop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html">Exercise 1 - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html">Exercise 2 - Implement Stubs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise3/exercise3.html">Exercise 3 - Testing the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html">Exercise 4 - Bidirectional Streaming</a></li>
+<li class="toctree-l1 current"><a class="reference internal current" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/exercise5.html#"><span class="toctree-expand"></span>Exercise 5 - Deployment to Kubernetes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html">Google Cloud Console Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deploykubernetes.html">Deploy a Kubernetes Cluster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/usingservices.html">Using Kubernetes Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deployment.html">Kubernetes Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/exercise6.html">Exercise 6 - Metadata and Interceptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise7/exercise7.html">Exercise 7 - Context Propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise8/exercise8.html">Exercise 8 - Tracing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">gRPC Chatroom Workshop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">Docs</a> »</li>
+        
+      <li>Exercise 5 - Deployment to Kubernetes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/_sources/exercise5/exercise5.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="exercise-5-deployment-to-kubernetes">
+<h1>Exercise 5 - Deployment to Kubernetes<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/exercise5.html#exercise-5-deployment-to-kubernetes" title="Permalink to this headline">¶</a></h1>
+<p>In this exercise we will deploy the chat service to Kubernetes.</p>
+<p>To simplify access to the chat client command line that service is still run locally.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html">Google Cloud Console Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html#google-cloud-sdk-install">Google Cloud SDK Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html#install-cloud-sdk">Install Cloud SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html#initialize-cloud-sdk">Initialize Cloud SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html#login-to-cloud">Login to Cloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html#verify-cloud-sdk">Verify Cloud SDK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html#install-kubectl">Install kubectl</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deploykubernetes.html">Deploy a Kubernetes Cluster</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deploykubernetes.html#set-default-region-and-zones">Set Default Region and Zones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deploykubernetes.html#configure-your-default-project">Configure your Default Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deploykubernetes.html#enable-compute-engine-and-kubernetes-engine-api">Enable Compute Engine and Kubernetes Engine API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deploykubernetes.html#create-a-kubernetes-cluster-using-the-google-kubernetes-engine">Create a Kubernetes Cluster using the Google Kubernetes Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deploykubernetes.html#verify-kubectl">Verify kubectl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deploykubernetes.html#explanation-by-ray-tsang-saturnism-https-twitter-com-saturnism">Explanation By Ray Tsang [@saturnism](https://twitter.com/saturnism)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/usingservices.html">Using Kubernetes Services</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/usingservices.html#setup-the-environment-file">Setup the Environment File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/usingservices.html#kubernetes-deployment-descriptors">Kubernetes Deployment Descriptors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/usingservices.html#update-the-server-urls">Update the Server URLs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/usingservices.html#update-database-file-location">Update Database File Location</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deployment.html">Kubernetes Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deployment.html#optional-build-and-upload-docker-images">Optional Build and Upload Docker images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deployment.html#deploy-chatroom-services-to-kubernetes">Deploy chatroom services to kubernetes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deployment.html#run-the-client-from-docker-hub">Run the client from docker hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/deployment.html#optional-run-the-client-from-local-docker-image">Optional - Run the client from local docker image</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/setup.html" class="btn btn-neutral float-right" title="Google Cloud Console Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatcli.html" class="btn btn-neutral" title="Implement Chat CLI Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2017, Ryan Knight, Ray Tsang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./exercise5-exercise5_files/jquery.js.download"></script>
+      <script type="text/javascript" src="./exercise5-exercise5_files/underscore.js.download"></script>
+      <script type="text/javascript" src="./exercise5-exercise5_files/doctools.js.download"></script>
+
+  
+
+  <script type="text/javascript" src="./exercise5-exercise5_files/theme.js.download"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+
+</body></html>

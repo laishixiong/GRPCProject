@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatstream.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Protobuf Definitions for Chat Stream Service — gRPC Chatroom Workshop  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="./exercise4-chatstream_files/custom.css" type="text/css">
+  <link rel="stylesheet" href="./exercise4-chatstream_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://retroryan8080.gitlab.io/grpc-java-workshop/genindex.html">
+    <link rel="search" title="Search" href="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html">
+    <link rel="next" title="Implement Chat CLI Client" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatcli.html">
+    <link rel="prev" title="Exercise 4 - Bidirectional Streaming" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html"> 
+
+  
+  <script src="./exercise4-chatstream_files/modernizr.min.js.download"></script>
+
+<style type="text/css">
+:root .btn[href*="/viphktv.com/"],
+:root .btn[href*=".papa9394.com"],
+:root .btn.btn-success.text-white[href*=".com:"]
+{ display: none !important; }</style></head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html" class="icon icon-home"> gRPC Chatroom Workshop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html">Exercise 1 - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html">Exercise 2 - Implement Stubs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise3/exercise3.html">Exercise 3 - Testing the Client</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html"><span class="toctree-expand"></span>Exercise 4 - Bidirectional Streaming</a><ul class="">
+<li class="toctree-l2 current"><a class="reference internal current" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatstream.html#">Protobuf Definitions for Chat Stream Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatstream.html#implement-chat-stream-service">Implement Chat Stream Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatcli.html">Implement Chat CLI Client</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/exercise5.html">Exercise 5 - Deployment to Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/exercise6.html">Exercise 6 - Metadata and Interceptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise7/exercise7.html">Exercise 7 - Context Propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise8/exercise8.html">Exercise 8 - Tracing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">gRPC Chatroom Workshop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">Docs</a> »</li>
+        
+          <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html">Exercise 4 - Bidirectional Streaming</a> »</li>
+        
+      <li>Protobuf Definitions for Chat Stream Service</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/_sources/exercise4/chatstream.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="protobuf-definitions-for-chat-stream-service">
+<h1>Protobuf Definitions for Chat Stream Service<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatstream.html#protobuf-definitions-for-chat-stream-service" title="Permalink to this headline">¶</a></h1>
+<p>The Protobuf definitions for the chat stream  are defined in the server file:</p>
+<p>chat-service/src/main/proto/ChatService.proto</p>
+<p>The primary protobuf definition to understand is ChatStreamService:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">service ChatStreamService {</span>
+<span class="go">    rpc chat(stream ChatMessage) returns (stream ChatMessageFromServer);</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>This defines a binary streaming channel between the client and server.</p>
+</div>
+<div class="section" id="implement-chat-stream-service">
+<h1>Implement Chat Stream Service<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatstream.html#implement-chat-stream-service" title="Permalink to this headline">¶</a></h1>
+<p>Open chat-service/src/main/java/com/example/chat/grpc/ChatStreamServiceImpl.java. ChatStreamServiceImpl.chat(…) is the bidirectional stream stub we need to implement.</p>
+<p>On the server side, we’ll need to listen to incoming streamed messages. To do this, the server needs to return a StreamObserver, to listen to incoming messages:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">@Override</span>
+<span class="go">public StreamObserver&lt;ChatMessage&gt; chat(</span>
+<span class="go">  StreamObserver&lt;ChatMessageFromServer&gt; responseObserver) {</span>
+<span class="go">  final String username = Constant.USER_ID_CTX_KEY.get();</span>
+
+<span class="go">  return new StreamObserver&lt;ChatMessage&gt;() {</span>
+<span class="go">    @Override</span>
+<span class="go">    public void onNext(ChatMessage chatMessage) {</span>
+
+<span class="go">    }</span>
+
+<span class="go">    @Override</span>
+<span class="go">    public void onError(Throwable throwable) {</span>
+
+<span class="go">    }</span>
+
+<span class="go">    @Override</span>
+<span class="go">    public void onCompleted() {</span>
+
+<span class="go">    }</span>
+<span class="go">  };</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>The responseObserver in the method parameter is what the server needs to use to stream data to the client.</p>
+<p>The ChatMessage being streamed to the server may have different types, such as JOIN a room, LEAVE a room, or simply a TEXT message for a room.  Implement the following:</p>
+<ol class="arabic simple">
+<li>When joining a chat room, add the responseObserver to the room’s set of all currently connected observers.</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">@Override</span>
+<span class="go">public void onNext(ChatMessage chatMessage) {</span>
+<span class="go">  Set&lt;StreamObserver&lt;ChatMessageFromServer&gt;&gt; observers =</span>
+<span class="go">      getRoomObservers(chatMessage.getRoomName());</span>
+<span class="go">  switch (chatMessage.getType()) {</span>
+<span class="go">    case JOIN:</span>
+<span class="go">      observers.add(responseObserver);</span>
+<span class="go">      break;</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>When leaving a chat room, remove the responseObserver from the room’s observers set.</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">@Override</span>
+<span class="go">public void onNext(ChatMessage chatMessage) {</span>
+<span class="go">  Set&lt;StreamObserver&lt;ChatMessageFromServer&gt;&gt; observers =</span>
+<span class="go">      getRoomObservers(chatMessage.getRoomName());</span>
+<span class="go">  switch (chatMessage.getType()) {</span>
+<span class="go">    case JOIN:</span>
+<span class="go">      observers.add(responseObserver);</span>
+<span class="go">      break;</span>
+<span class="go">    case LEAVE:</span>
+<span class="go">      observers.remove(responseObserver);</span>
+<span class="go">      break;</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>When sending a message, first make sure user is in the room, and then send to all the connected observers in the room:</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">@Override</span>
+<span class="go">public void onNext(ChatMessage chatMessage) {</span>
+<span class="go">  Set&lt;StreamObserver&lt;ChatMessageFromServer&gt;&gt; observers =</span>
+<span class="go">      getRoomObservers(chatMessage.getRoomName());</span>
+<span class="go">  switch (chatMessage.getType()) {</span>
+<span class="go">    case JOIN:</span>
+<span class="go">      observers.add(responseObserver);</span>
+<span class="go">      break;</span>
+<span class="go">    case LEAVE:</span>
+<span class="go">      observers.remove(responseObserver);</span>
+<span class="go">      break;</span>
+<span class="go">    case TEXT:</span>
+<span class="go">      if (!observers.contains(responseObserver)) {</span>
+<span class="go">        responseObserver.onError(</span>
+<span class="go">          Status.PERMISSION_DENIED.withDescription("You are not in the room " +</span>
+<span class="go">            chatMessage.getRoomName()).asRuntimeException());</span>
+<span class="go">        return;</span>
+<span class="go">      }</span>
+<span class="go">      Timestamp now = Timestamp.newBuilder()</span>
+<span class="go">          .setSeconds(new Date().getTime()).build();</span>
+<span class="go">      ChatMessageFromServer messageFromServer =</span>
+<span class="go">          ChatMessageFromServer.newBuilder()</span>
+<span class="go">              .setType(chatMessage.getType())</span>
+<span class="go">              .setTimestamp(now)</span>
+<span class="go">              .setFrom(username)</span>
+<span class="go">              .setMessage(chatMessage.getMessage())</span>
+<span class="go">              .setRoomName(chatMessage.getRoomName())</span>
+<span class="go">          .build();</span>
+<span class="go">      observers.stream().forEach(o -&gt; o.onNext(messageFromServer));</span>
+<span class="go">      break;</span>
+<span class="go">  }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>If there is an error, or when the client closes connection, remove the responseObserver from all rooms</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">@Override</span>
+<span class="go">public void onError(Throwable throwable) {</span>
+<span class="go">    logger.log(Level.SEVERE, "gRPC error", throwable);</span>
+<span class="go">    removeObserverFromAllRooms(responseObserver);</span>
+<span class="go">}</span>
+
+<span class="go">@Override</span>
+<span class="go">public void onCompleted() {</span>
+<span class="go">  removeObserverFromAllRooms(responseObserver);</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Run the authserver and chatserver in separate terminals:</li>
+</ol>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">//start auth server</span>
+<span class="gp">$</span> <span class="nb">cd</span> auth-service
+<span class="gp">$</span> mvn install exec:java
+<span class="go">...</span>
+<span class="go">INFO: Server started on port 9091</span>
+
+<span class="go">//start chat server</span>
+<span class="gp">$</span> <span class="nb">cd</span> chat-service
+<span class="gp">$</span> mvn install exec:java
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/chatcli.html" class="btn btn-neutral float-right" title="Implement Chat CLI Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html" class="btn btn-neutral" title="Exercise 4 - Bidirectional Streaming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2017, Ryan Knight, Ray Tsang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./exercise4-chatstream_files/jquery.js.download"></script>
+      <script type="text/javascript" src="./exercise4-chatstream_files/underscore.js.download"></script>
+      <script type="text/javascript" src="./exercise4-chatstream_files/doctools.js.download"></script>
+
+  
+
+  <script type="text/javascript" src="./exercise4-chatstream_files/theme.js.download"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+
+</body></html>

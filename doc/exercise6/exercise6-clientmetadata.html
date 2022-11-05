@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/clientmetadata.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Passing Metadata from a Client — gRPC Chatroom Workshop  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="./exercise6-clientmetadata_files/custom.css" type="text/css">
+  <link rel="stylesheet" href="./exercise6-clientmetadata_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://retroryan8080.gitlab.io/grpc-java-workshop/genindex.html">
+    <link rel="search" title="Search" href="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html">
+    <link rel="next" title="Exercise 7 - Context Propagation" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise7/exercise7.html">
+    <link rel="prev" title="Define the Metadata" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/metadata.html"> 
+
+  
+  <script src="./exercise6-clientmetadata_files/modernizr.min.js.download"></script><style type="text/css">
+:root .btn[href*="/viphktv.com/"],
+:root .btn[href*=".papa9394.com"],
+:root .btn.btn-success.text-white[href*=".com:"]
+{ display: none !important; }</style>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html" class="icon icon-home"> gRPC Chatroom Workshop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/setup/setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html">Exercise 1 - Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html">Exercise 2 - Implement Stubs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise3/exercise3.html">Exercise 3 - Testing the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html">Exercise 4 - Bidirectional Streaming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/exercise5.html">Exercise 5 - Deployment to Kubernetes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/exercise6.html"><span class="toctree-expand"></span>Exercise 6 - Metadata and Interceptors</a><ul class="">
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/metadata.html">Define the Metadata</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/clientmetadata.html#"><span class="toctree-expand"></span>Passing Metadata from a Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/clientmetadata.html#decorate-with-metadatautils">Decorate with MetadataUtils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/clientmetadata.html#metadata-client-interceptor">Metadata Client Interceptor</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise7/exercise7.html">Exercise 7 - Context Propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise8/exercise8.html">Exercise 8 - Tracing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">gRPC Chatroom Workshop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">Docs</a> »</li>
+        
+          <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/exercise6.html">Exercise 6 - Metadata and Interceptors</a> »</li>
+        
+      <li>Passing Metadata from a Client</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/_sources/exercise6/clientmetadata.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="passing-metadata-from-a-client">
+<h1>Passing Metadata from a Client<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/clientmetadata.html#passing-metadata-from-a-client" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="decorate-with-metadatautils">
+<h2>Decorate with MetadataUtils<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/clientmetadata.html#decorate-with-metadatautils" title="Permalink to this headline">¶</a></h2>
+<p>In ChatClient.initChatServices(), we instantiated the authService stub. We can decorate the stub using MetadataUtils to attach additional headers:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">public void initChatService() {</span>
+<span class="go">  …</span>
+<span class="go">  Metadata metadata = new Metadata();</span>
+<span class="go">  metadata.put(Constant.JWT_METADATA_KEY, token);</span>
+
+<span class="go">  chatRoomService = MetadataUtils.attachHeaders(</span>
+<span class="go">    ChatRoomServiceGrpc.newBlockingStub(chatChannel), metadata);</span>
+<span class="go">  chatStreamService = ChatStreamServiceGrpc.newStub(chatChannel);</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<p>Now, every outgoing call from chatRoomService will have the JWT metadata attached. Let’s try it by running the client, and login as admin user, and then create a new room:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> <span class="nb">cd</span> chat-cli-client
+<span class="gp">$</span> mvn install exec:java
+<span class="go">-&gt; /login admin</span>
+<span class="go">Jun 28, 2017 4:45:47 PM com.example.chat.ChatClient readLogin</span>
+<span class="go">INFO: processing login user</span>
+<span class="go">password&gt; qwerty</span>
+<span class="go">...</span>
+<span class="go">INFO: initializing chat services with token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlzcyI6ImF1dGgtaXNzdWVyIn0.oQebRc48QIig1R5-JajeTCP3TWP1fThBilNpoOtKavA</span>
+<span class="go">[chat message] | /join [room] | /leave [room] | /create [room] | /list | /quit</span>
+<span class="go">admin-&gt; /create test</span>
+</pre></div>
+</div>
+<p>On the server side, you should see the JWT token printed in the console:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">INFO: Server Started on port 9092</span>
+<span class="go">Token: eyJ0eXAiOiJKV1QiLCJhbGci...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="metadata-client-interceptor">
+<h2>Metadata Client Interceptor<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/clientmetadata.html#metadata-client-interceptor" title="Permalink to this headline">¶</a></h2>
+<p>Alternatively, you can use a client interceptor to attach headers too. There is an out of the box interceptor to do just that. In ChatServer.initChatServices(), use the stub normally. But you can add the client interceptor to the Channel:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">public void initChatService() {</span>
+<span class="go">...</span>
+<span class="go">Metadata metadata = new Metadata();</span>
+<span class="go">metadata.put(Constant.JWT_METADATA_KEY, token);</span>
+
+<span class="go">// TODO Add JWT Token via a Call Credential</span>
+<span class="go">chatChannel = ManagedChannelBuilder.forTarget("localhost:9092")</span>
+<span class="go">  .intercept(MetadataUtils.newAttachHeadersInterceptor(metadata))</span>
+<span class="go">  .usePlaintext(true)</span>
+<span class="go">  .build();</span>
+
+<span class="go">chatRoomService = ChatRoomServiceGrpc.newBlockingStub(chatChannel);</span>
+<span class="go">chatStreamService = ChatStreamServiceGrpc.newStub(chatChannel);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise7/exercise7.html" class="btn btn-neutral float-right" title="Exercise 7 - Context Propagation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/metadata.html" class="btn btn-neutral" title="Define the Metadata" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2017, Ryan Knight, Ray Tsang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./exercise6-clientmetadata_files/jquery.js.download"></script>
+      <script type="text/javascript" src="./exercise6-clientmetadata_files/underscore.js.download"></script>
+      <script type="text/javascript" src="./exercise6-clientmetadata_files/doctools.js.download"></script>
+
+  
+
+  <script type="text/javascript" src="./exercise6-clientmetadata_files/theme.js.download"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+
+</body></html>

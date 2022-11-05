@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html -->
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths" lang="en" style=""><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configure Maven — gRPC Chatroom Workshop  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="./exercise1-maven_files/custom.css" type="text/css">
+  <link rel="stylesheet" href="./exercise1-maven_files/pygments.css" type="text/css">
+    <link rel="index" title="Index" href="https://retroryan8080.gitlab.io/grpc-java-workshop/genindex.html">
+    <link rel="search" title="Search" href="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html">
+    <link rel="next" title="Generate Stubs" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/stubs.html">
+    <link rel="prev" title="Create a Proto File" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html"> 
+
+  
+  <script src="./exercise1-maven_files/modernizr.min.js.download"></script><style type="text/css">
+:root .btn[href*="/viphktv.com/"],
+:root .btn[href*=".papa9394.com"],
+:root .btn.btn-success.text-white[href*=".com:"]
+{ display: none !important; }</style>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html" class="icon icon-home"> gRPC Chatroom Workshop
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="https://retroryan8080.gitlab.io/grpc-java-workshop/search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs">
+    <input type="hidden" name="check_keywords" value="yes">
+    <input type="hidden" name="area" value="default">
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/setup/setup.html">Setup</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html"><span class="toctree-expand"></span>Exercise 1 - Basics</a><ul class="">
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html">Create a Proto File</a></li>
+<li class="toctree-l2 current"><a class="reference internal current" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html#"><span class="toctree-expand"></span>Configure Maven</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html#add-the-maven-dependencies">Add the Maven dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html#configure-the-plugins">Configure the plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/stubs.html">Generate Stubs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise2/exercise2.html">Exercise 2 - Implement Stubs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise3/exercise3.html">Exercise 3 - Testing the Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise4/exercise4.html">Exercise 4 - Bidirectional Streaming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise5/exercise5.html">Exercise 5 - Deployment to Kubernetes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise6/exercise6.html">Exercise 6 - Metadata and Interceptors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise7/exercise7.html">Exercise 7 - Context Propagation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise8/exercise8.html">Exercise 8 - Tracing</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">gRPC Chatroom Workshop</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/index.html">Docs</a> »</li>
+        
+          <li><a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/exercise1.html">Exercise 1 - Basics</a> »</li>
+        
+      <li>Configure Maven</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/_sources/exercise1/maven.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configure-maven">
+<h1>Configure Maven<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html#configure-maven" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="add-the-maven-dependencies">
+<h2>Add the Maven dependencies<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html#add-the-maven-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>In <cite>auth-service/pom.xml</cite>, there are the gRPC dependencies configured:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&lt;project&gt;</span>
+<span class="go">    &lt;dependencies&gt;</span>
+<span class="go">        &lt;dependency&gt;</span>
+<span class="go">            &lt;groupId&gt;io.grpc&lt;/groupId&gt;</span>
+<span class="go">            &lt;artifactId&gt;grpc-netty&lt;/artifactId&gt;</span>
+<span class="go">        &lt;/dependency&gt;</span>
+<span class="go">        &lt;dependency&gt;</span>
+<span class="go">            &lt;groupId&gt;io.grpc&lt;/groupId&gt;</span>
+<span class="go">            &lt;artifactId&gt;grpc-protobuf&lt;/artifactId&gt;</span>
+<span class="go">        &lt;/dependency&gt;</span>
+<span class="go">        &lt;dependency&gt;</span>
+<span class="go">            &lt;groupId&gt;io.grpc&lt;/groupId&gt;</span>
+<span class="go">            &lt;artifactId&gt;grpc-stub&lt;/artifactId&gt;</span>
+<span class="go">        &lt;/dependency&gt;</span>
+
+<span class="go">    &lt;/dependencies&gt;</span>
+
+<span class="go">&lt;/project&gt;</span>
+</pre></div>
+</div>
+<p>Note: In this example, the gRPC versions are specified in the parent POM’s dependencyManagement section.</p>
+</div>
+<div class="section" id="configure-the-plugins">
+<h2>Configure the plugins<a class="headerlink" href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/maven.html#configure-the-plugins" title="Permalink to this headline">¶</a></h2>
+<p>There are 2 plugins you must configure in order to automatically translate the proto file into Java code. First is the os-maven-plugin. This plugin will automatically detect the operation system and architecture of where the build is taking place, and makes the value available in <cite>${os.detected.classifier}</cite> variable. This is needed for the second plugin, protobuf-maven-plugin to download the native protoc generator. Native protoc generator is needed to translate proto file into Java code (or any other supported languages).</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&lt;project&gt;</span>
+<span class="go">    &lt;dependencies&gt;</span>
+<span class="go">        ...</span>
+<span class="go">    &lt;/dependencies&gt;</span>
+<span class="go">    ...</span>
+<span class="go">    &lt;build&gt;</span>
+<span class="go">        &lt;extensions&gt;</span>
+<span class="go">            &lt;extension&gt;</span>
+<span class="go">                &lt;groupId&gt;kr.motd.maven&lt;/groupId&gt;</span>
+<span class="go">                &lt;artifactId&gt;os-maven-plugin&lt;/artifactId&gt;</span>
+<span class="go">            &lt;/extension&gt;</span>
+<span class="go">        &lt;/extensions&gt;</span>
+<span class="go">        &lt;plugins&gt;</span>
+<span class="go">            &lt;plugin&gt;</span>
+<span class="go">                &lt;groupId&gt;org.xolstice.maven.plugins&lt;/groupId&gt;</span>
+<span class="go">                &lt;artifactId&gt;protobuf-maven-plugin&lt;/artifactId&gt;</span>
+<span class="go">            &lt;/plugin&gt;</span>
+<span class="go">            ...</span>
+<span class="go">        &lt;/plugin&gt;</span>
+<span class="go">    &lt;/build&gt;</span>
+<span class="go">&lt;/project&gt;</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong> The plugins are also managed by the parent POM, in its pluginManagement section. There is much more to the configuration of protobuf-maven-plugin.  In addition to the plugin configuration to download the right version of the protoc generator, it also ties the generation into Maven’s compile and compile-custom phases, so that the files are auto-generated whenever you recompile your code.  See the parent POM for detail.</p>
+<p>There is also a Gradle plugin!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/stubs.html" class="btn btn-neutral float-right" title="Generate Stubs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="https://retroryan8080.gitlab.io/grpc-java-workshop/exercise1/protofile.html" class="btn btn-neutral" title="Create a Proto File" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2017, Ryan Knight, Ray Tsang.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="./exercise1-maven_files/jquery.js.download"></script>
+      <script type="text/javascript" src="./exercise1-maven_files/underscore.js.download"></script>
+      <script type="text/javascript" src="./exercise1-maven_files/doctools.js.download"></script>
+
+  
+
+  <script type="text/javascript" src="./exercise1-maven_files/theme.js.download"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+
+</body></html>
